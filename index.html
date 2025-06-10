@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salam Games - ألعاب محاكاة وعالم مفتوح</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for Day/Night Mode */
+        :root {
+            /* Dark Mode Defaults - Adjusted for more eye-friendliness */
+            --bg-body: url('./تصميم بدون عنوان(1).png'); /* تم تعديل الخلفية */
+            /* --bg-body-blend-mode: overlay; */ /* تم إزالة وضع المزج */
+            --color-text-primary: #f0f0f0; /* Softer white */
+            --color-text-secondary: #c0c0c0; /* Slightly lighter gray for better readability in dark mode */
+            --color-highlight: #4caf50; /* A slightly warmer green */
+            --color-accent-gold: #ffd700;
+            --color-accent-blue: #4169e1;
+            --color-link-darkmode: #90ee90; /* Light green for links in dark mode */
+
+
+            /* NEW WOODEN 3D NAVBAR STYLES (DARK MODE) */
+            /* Using olive green for navbar background */
+            --navbar-bg: linear-gradient(145deg, #556B2F, #6B8E23); /* Olive Green Gradient */
+            --navbar-bg-blend-mode: normal; /* No blending needed for solid gradient */
+            --navbar-border: #4F5C25; /* Darker olive for border */
+            --navbar-shadow: 0 5px 20px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(85, 107, 47, 0.3); /* Stronger shadow with olive tones */
+            --navbar-hover-bg: linear-gradient(145deg, #6B8E23, #7C9F3E); /* Slightly lighter olive on hover */
+            --navbar-hover-shadow: 0 0 20px rgba(85, 107, 47, 0.7), inset 0 0 8px rgba(255, 255, 255, 0.2); /* Glowing hover effect */
+            
+            --hero-bg: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('./wp3624908.jpg');
+            --hero-text-shadow: 0 0 15px rgba(76, 175, 80, 0.9);
+
+            --section-shadow: 0 15px 50px rgba(0, 0, 0, 0.6); /* Enhanced shadow */
+
+            --about-bg: rgba(25, 40, 25, 0.8); /* Slightly less transparent */
+            --about-border: rgba(76, 175, 80, 0.5); /* Stronger border */
+            --about-img-shadow: 0 0 15px rgba(76, 175, 80, 0.6); /* More pronounced shadow */
+
+            --useful-sites-bg: rgba(25, 25, 45, 0.85); /* Slightly less transparent */
+            --useful-sites-border: rgba(100, 100, 150, 0.5); /* Stronger border */
+            --site-card-bg: rgba(0, 0, 0, 0.75); /* Slightly less transparent */
+            --site-card-border: rgba(100, 100, 150, 0.4); /* Stronger border */
+            --site-card-hover-shadow: 0 15px 40px rgba(100, 100, 150, 0.6); /* More pronounced shadow */
+            --site-card-hover-border: #b0c0ff; /* Brighter blue for hover */
+
+            --social-media-bg: rgba(20, 35, 30, 0.8); /* Slightly less transparent */
+            --social-media-border: rgba(76, 175, 80, 0.5); /* Stronger border */
+            --social-link-bg: rgba(0, 0, 0, 0.75); /* Slightly less transparent */
+            --social-link-border: rgba(76, 175, 80, 0.4); /* Stronger border */
+            --social-link-hover-shadow: 0 12px 30px rgba(76, 175, 80, 0.5); /* More pronounced shadow */
+            --social-link-hover-border: #60c060; /* Brighter green for hover */
+
+            --my-games-bg: linear-gradient(135deg, rgba(70, 130, 180, 0.7) 0%, rgba(50, 100, 150, 0.8) 100%); /* Blueish gradient */
+            --my-games-border: rgba(70, 130, 180, 0.5);
+
+            --footer-bg: #101a10;
+            --footer-border: #4caf50;
+            --footer-link-hover: #ffd700;
+            --footer-link-hover-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+
+            --floating-btn-shadow: 0 5px 20px rgba(76, 175, 80, 0.5);
+            --floating-btn-pulse-shadow-strong: 0 5px 30px rgba(76, 175, 80, 0.9);
+        }
+
+        body.light-mode {
+            /* Light Mode Overrides - Adjusted for grayish, softer lighting, and shadows */
+            --bg-body: url('./تصميم بدون عنوان(1).png'); /* تم تعديل الخلفية */
+            /* --bg-body-blend-mode: overlay; */ /* تم إزالة وضع المزج */
+            --color-text-primary: #444444; /* Darker gray for primary text */
+            --color-text-secondary: #888888; /* Lighter gray for secondary text */
+            --color-highlight: #9fb0b5; /* Desaturated blue-gray highlight */
+            --color-accent-gold: #d0c0a0; /* Desaturated gold */
+            --color-accent-blue: #a0b0d0; /* Desaturated blue */
+            --color-link-darkmode: #6a966a; /* Darker green for links in light mode */
+
+
+            /* NEW WOODEN 3D NAVBAR STYLES (LIGHT MODE) */
+            /* Using lighter olive green for navbar background in light mode */
+            --navbar-bg: linear-gradient(145deg, #A8B08B, #C2D1A1); /* Lighter Olive Green Gradient */
+            --navbar-bg-blend-mode: normal;
+            --navbar-border: #8D9674; /* Darker light olive for border */
+            --navbar-shadow: 0 5px 20px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(168, 176, 139, 0.3); /* Stronger shadow with olive tones */
+            --navbar-hover-bg: linear-gradient(145deg, #C2D1A1, #D9E4B5); /* Slightly lighter olive on hover */
+            --navbar-hover-shadow: 0 0 20px rgba(168, 176, 139, 0.7), inset 0 0 8px rgba(0, 0, 0, 0.1); /* Glowing hover effect */
+
+            --my-games-bg: linear-gradient(135deg, rgba(100, 149, 237, 0.9) 0%, rgba(80, 120, 200, 0.95) 100%); /* Lighter blueish gradient */
+            --my-games-border: rgba(100, 149, 237, 0.5);
+
+            /* ... other variables ... */
+        }
+
+        /* Specific border colors for site cards - adjusted for gray theme */
+        .light-mode .site-card.harvest { border-color: rgba(160, 180, 170, 0.3); } /* desaturated green */
+        .light-mode .site-card.harvest:hover { border-color: #a0c0b0; box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1); }
+
+        .light-mode .site-card.kitchen { border-color: rgba(200, 180, 160, 0.3); } /* desaturated orange */
+        .light-mode .site-card.kitchen:hover { border-color: #d0c0a0; box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1); }
+
+        .light-mode .site-card.store { border-color: rgba(200, 160, 180, 0.3); } /* desaturated pink */
+        .light-mode .site-card.store:hover { border-color: #d0a0b0; box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1); }
+
+        .light-mode .site-card.wiki { border-color: rgba(160, 180, 200, 0.3); } /* desaturated blue */
+        .light-mode .site-card.wiki:hover { border-color: #a0b0d0; box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1); }
+
+        /* New style for Wheel of Names link */
+        .site-card.wheel-of-names {
+            border-color: rgba(128, 0, 128, 0.3); /* Purple */
+        }
+        .light-mode .site-card.wheel-of-names {
+            border-color: rgba(160, 140, 180, 0.3); /* Desaturated light purple */
+        }
+        .site-card.wheel-of-names:hover {
+            border-color: #800080; /* Stronger purple on hover */
+            box-shadow: 0 12px 35px rgba(128, 0, 128, 0.4);
+        }
+        .light-mode .site-card.wheel-of-names:hover {
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Specific hover colors for social links - adjusted for gray theme */
+        .light-mode .social-link.youtube { border-color: rgba(200, 160, 160, 0.3); }
+        .light-mode .social-link.youtube:hover { border-color: #d0a0a0; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); }
+
+        .light-mode .social-link.facebook { border-color: rgba(160, 180, 200, 0.3); }
+        .light-mode .social-link.facebook:hover { border-color: #a0b0d0; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); }
+
+        .light-mode .social-link.discord { border-color: rgba(170, 180, 200, 0.3); }
+        .light-mode .social-link.discord:hover { border-color: #b0c0d0; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); }
+
+        .light-mode .social-link.telegram { border-color: rgba(160, 180, 200, 0.3); }
+        .light-mode .social-link.telegram:hover { border-color: #a0c0d0; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); }
+
+        .light-mode .social-link.tiktok { border-color: rgba(200, 160, 180, 0.3); }
+        .light-mode .social-link.tiktok:hover { border-color: #d0a0b0; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); }
+        
+        /* Removed the Wheel of Names social link specific styles */
+        /* .social-link.wheel-of-names {
+            border-color: rgba(128, 0, 128, 0.3);
+        }
+        .light-mode .social-link.wheel-of-names {
+            border-color: rgba(160, 140, 180, 0.3);
+        }
+        .social-link.wheel-of-names:hover {
+            border-color: #800080;
+            box-shadow: 0 10px 25px rgba(128, 0, 128, 0.4);
+        }
+        .light-mode .social-link.wheel-of-names:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        } */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif; /* Applied Cairo font as fallback */
+            background: var(--bg-body);
+            /* background-blend-mode: var(--bg-body-blend-mode); */ /* تم إزالة وضع المزج لتحقيق مظهر طبيعي */
+            background-size: cover;
+            background-attachment: fixed;
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background 0.5s ease, color 0.5s ease; /* Smooth transition for theme change */
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--navbar-bg); /* Use olive green gradient */
+            /* Removed background-blend-mode as it's not needed with solid gradient */
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 0; /* Reduced padding for smaller size */
+            z-index: 1000;
+            border-bottom: 2px solid var(--navbar-border); /* Slightly thinner border */
+            box-shadow: var(--navbar-shadow); /* Stronger, 3D-like shadow */
+            transition: all 0.5s ease;
+        }
+
+        .nav-container {
+            max-width: 90%; /* Changed to 90% */
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.6rem; /* Slightly smaller font for logo text */
+            font-weight: bold;
+            color: var(--color-highlight);
+            text-shadow: 0 0 15px var(--color-highlight); /* Slightly reduced shadow */
+        }
+        
+        /* Updated: Font for 'Salam Games' in navbar */
+        .logo span {
+            font-family: 'Montserrat', sans-serif; /* New font */
+            font-weight: 900; /* Extra bold */
+            font-size: 1.8rem; /* Slightly smaller for prominence */
+            color: #FFD700; /* Changed to gold */
+            text-shadow: 
+                0 0 5px rgba(255, 215, 0, 0.8), /* inner glow */
+                1px 1px 2px rgba(184, 134, 11, 0.9), /* dark gold for depth */
+                2px 2px 3px rgba(184, 134, 11, 0.7),
+                3px 3px 4px rgba(184, 134, 11, 0.5); /* progressively fading shadow for 3D */
+        }
+
+        /* New styles for the two images next to "Salam Games" text */
+        .logo .new-logo-img {
+            height: 30px; /* Adjust size as needed */
+            width: auto;
+            margin: 0 0.2rem;
+            vertical-align: middle;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        /* Adjusted styles for the main logo image next to text */
+        .logo .main-logo-img {
+            width: 35px; /* Slightly smaller */
+            height: 35px; /* Slightly smaller */
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+        
+        /* New styles for additional images in logo section */
+        .logo .extra-logo-img {
+            height: 25px; /* Slightly smaller */
+            width: auto;
+            margin: 0 0.2rem;
+            vertical-align: middle;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem; /* Reduced gap between nav links */
+        }
+
+        .nav-links a {
+            color: var(--color-text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.6rem 1rem; /* Slightly smaller clickable area */
+            border-radius: 8px; /* Slightly less rounded corners */
+            display: flex;
+            align-items: center;
+            gap: 0.4rem; /* Slightly reduced gap */
+            background: rgba(255, 255, 255, 0.08); /* Subtle background for buttons */
+            border: 1px solid rgba(255, 255, 255, 0.15); /* Light border for definition */
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15); /* Inner shadow for depth */
+            transform: translateZ(0); /* Enable 3D transform */
+            perspective: 1000px;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-highlight);
+            background: var(--navbar-hover-bg); /* Use olive hover background */
+            box-shadow: var(--navbar-hover-shadow); /* Olive hover shadow */
+            transform: translateY(-2px) scale(1.01); /* Slightly less pronounced lift and scale */
+            border-color: var(--color-highlight); /* Highlight border on hover */
+        }
+
+        /* Styles for images within nav links - Increased size */
+        .nav-links a img {
+            height: 28px; /* Reduced size */
+            width: auto;
+            vertical-align: middle;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-links a:hover img {
+            transform: scale(1.05) rotate(3deg); /* Slightly less rotation */
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            background: var(--navbar-hover-bg);
+            border: 2px solid var(--navbar-border);
+            border-radius: 50%;
+            width: 40px; /* Smaller */
+            height: 40px; /* Smaller */
+            font-size: 1.3rem; /* Smaller font */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            color: var(--color-text-primary);
+            box-shadow: var(--navbar-hover-shadow);
+        }
+        .theme-toggle:hover {
+            transform: scale(1.08); /* Slightly less scale */
+            background: var(--color-highlight);
+            color: #ffffff; /* Ensure text is visible regardless of mode */
+            box-shadow: 0 0 18px var(--color-highlight); /* Slightly less shadow */
+        }
+
+
+        /* Hero Section - now includes header content */
+        .hero {
+            position: relative;
+            height: 80vh; /* Increased height to accommodate new content */
+            background: var(--hero-bg);
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column; /* Stack content vertically */
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 8rem; /* Add padding to push content down from fixed navbar */
+            border-bottom: 3px solid var(--navbar-border); /* Retain header border style */
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            position: relative; /* Ensure text is above GIF */
+            z-index: 1; /* Ensure text is above GIF */
+        }
+
+        /* New styles for the combined header/hero title (formerly header h1) */
+        .hero .main-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 25px rgba(76, 175, 80, 0.6); /* Using the original header text shadow */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+            color: var(--color-text-primary); /* Ensure text color is applied directly */
+        }
+
+        /* New style for the Salam Games text within the main title (formerly header h1 span) */
+        .hero .main-title span {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 4.5rem;
+            text-shadow: 0 0 30px rgba(76, 175, 80, 0.8), 0 0 15px rgba(76, 175, 80, 0.6);
+            color: var(--color-text-primary);
+        }
+
+        /* New style for the GIF within the hero section (formerly header-gif-logo) */
+        .hero-gif-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%; /* Smaller size */
+            height: 50%; /* Smaller size */
+            object-fit: cover;
+            z-index: 0;
+            opacity: 1; /* Retained opacity 1 to remove transparency */
+            filter: grayscale(0%);
+            animation: none;
+            box-shadow: none;
+        }
+
+        /* Styles for the main logo image in the hero section (formerly header-logo) */
+        .hero .header-logo {
+            width: 80px; /* Increased size */
+            height: 80px; /* Increased size */
+            object-fit: contain;
+            vertical-align: middle;
+        }
+
+        /* New style for the combined header/hero paragraph (formerly header p) */
+        .hero .hero-subtitle {
+            font-size: 1.3rem;
+            color: #ffffff; /* Changed to white */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); /* Added shadow */
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-highlight);
+            text-shadow: var(--hero-text-shadow);
+        }
+
+        /* Styling for the inline GIF in the hero h2 */
+        .hero h2 .inline-gif {
+            height: 50px; /* Height of the GIF - Increased from 30px */
+            width: auto;
+            vertical-align: middle; /* Align with text baseline */
+            margin-right: 5px; /* Small space after the GIF */
+            margin-left: 5px; /* Small space before the GIF */
+        }
+
+        /* Updated styling for the hero descriptive paragraph */
+        .hero .hero-description-text { /* Added a new class for specific styling */
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #ffffff; /* Changed to white */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); /* Added shadow */
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, var(--color-highlight), var(--color-accent-gold), var(--color-accent-blue));
+            color: #000; /* Fixed color for readability on gradient */
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(50, 205, 50, 0.4); /* Still uses RGBA for specific effect */
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 30px rgba(50, 205, 50, 0.6); /* Still uses RGBA for specific effect */
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 2rem;
+            max-width: 80%; /* Changed to 80% */
+            margin: 2rem auto;
+            box-shadow: var(--section-shadow);
+            border-radius: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            /* Changed color to a vibrant gold for better visibility */
+            color: #FFD700; 
+            /* Added a stronger, more pronounced shadow with a subtle glow effect */
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.9), 0 0 20px rgba(255, 215, 0, 0.6), 0 0 30px rgba(255, 215, 0, 0.3);
+            display: flex; /* To align image with text */
+            justify-content: center;
+            align-items: center;
+            gap: 10px; /* Space between heading and image */
+        }
+        /* New style for the GIF within the useful sites h2 */
+        .section h2 .useful-sites-heading-gif,
+        .section h2 .my-games-heading-gif, /* New style for my games heading GIF */
+        .section h2 .social-heading-gif { /* Already existing, just grouping */
+            height: 55px; /* Increased size */
+            width: auto;
+            vertical-align: middle;
+            margin-right: 5px; /* Add some spacing */
+            margin-left: 5px; /* Add some spacing */
+        }
+
+        .light-mode .section h2 {
+            /* Adjust for light mode for better contrast */
+            color: #B8860B; /* Darker goldenrod for light mode */
+            text-shadow: 0 0 5px rgba(184, 134, 11, 0.5), 0 0 10px rgba(184, 134, 11, 0.3);
+        }
+
+        /* Style for the GIF next to 'من نحن' heading */
+        .about-heading-gif {
+            width: 100px; /* Increased size for the GIF */
+            height: 100px; /* Increased size for the GIF */
+            object-fit: contain;
+            vertical-align: middle;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--about-bg);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 2px solid var(--about-border);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-icons {
+            display: flex; /* Changed to flexbox */
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center; /* Center items horizontally */
+        }
+
+        .about-icons .about-icon-img {
+            width: 70px; /* Medium size */
+            height: 70px;
+            object-fit: contain; /* Ensure images fit without distortion */
+            vertical-align: middle; /* Align with any potential text or other inline elements */
+            animation: rotate-bounce 4s infinite ease-in-out; /* Apply animation */
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #ffffff; /* تم تغيير اللون إلى الأبيض */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* إضافة ظل للنص */
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* New styles for about-images - Increased size */
+        .about-images {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .about-images img {
+            width: 100px; /* Increased size */
+            height: 100px; /* Increased size */
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: var(--about-img-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .about-images img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Useful Websites Section - New Background */
+        .useful-sites {
+            background: linear-gradient(135deg, rgba(34, 139, 34, 0.7) 0%, rgba(25, 100, 25, 0.8) 100%); /* Greenish blue gradient */
+            border-radius: 20px;
+            padding: 3rem;
+            border: 2px solid var(--useful-sites-border);
+        }
+
+        .light-mode .useful-sites {
+            background: linear-gradient(135deg, rgba(170, 200, 180, 0.9) 0%, rgba(150, 180, 160, 0.95) 100%); /* Lighter greenish blue for light mode */
+        }
+
+        .sites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.2rem; /* Adjusted gap for better spacing */
+            margin-top: 1.5rem; /* Adjusted margin */
+        }
+
+        /* Site Card - Adjusted to match Social Link */
+        .site-card {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem; /* Matched social-link */
+            padding: 0.8rem; /* Matched social-link */
+            background: linear-gradient(145deg, rgba(20, 30, 20, 0.8), rgba(30, 50, 30, 0.8)); /* Default gradient */
+            border-radius: 15px;
+            text-decoration: none;
+            color: var(--color-text-primary);
+            transition: all 0.3s ease;
+            border: 2px solid var(--site-card-border);
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5), inset 1px 1px 3px rgba(255, 255, 255, 0.1); /* 3D effect shadow */
+            animation: button-pulse 3s infinite ease-in-out; /* Added animation */
+        }
+
+        .site-card:hover {
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), inset -1px -1px 3px rgba(255, 255, 255, 0.05); /* Simulates press */
+            transform: translateY(1px); /* Slight press down */
+            animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; /* Shaking animation on hover */
+            backface-visibility: hidden; /* Fix for flickering on some browsers */
+            perspective: 1000px;
+        }
+
+        .light-mode .site-card {
+            background: linear-gradient(145deg, rgba(240, 240, 240, 0.9), rgba(220, 220, 220, 0.9)); /* Light mode default gradient */
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15), inset 1px 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        .light-mode .site-card:hover {
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.08), inset -1px -1px 3px rgba(0, 0, 0, 0.02);
+        }
+
+        /* Specific border colors for site cards - keeping original branding where possible */
+        .site-card.harvest {
+            background: linear-gradient(145deg, rgba(34, 139, 34, 0.6), rgba(25, 100, 25, 0.7)); /* Greenish */
+        }
+        .light-mode .site-card.harvest {
+            background: linear-gradient(145deg, rgba(144, 238, 144, 0.8), rgba(120, 210, 120, 0.9)); /* Lighter Greenish */
+        }
+
+        .site-card.kitchen {
+            background: linear-gradient(145deg, rgba(255, 140, 0, 0.6), rgba(200, 110, 0, 0.7)); /* Orange */
+        }
+        .light-mode .site-card.kitchen {
+            background: linear-gradient(145deg, rgba(255, 165, 0, 0.8), rgba(230, 130, 0, 0.9)); /* Lighter Orange */
+        }
+
+        .site-card.store {
+            background: linear-gradient(145deg, rgba(255, 20, 147, 0.6), rgba(200, 15, 110, 0.7)); /* Pink */
+        }
+        .light-mode .site-card.store {
+            background: linear-gradient(145deg, rgba(255, 105, 180, 0.8), rgba(230, 75, 140, 0.9)); /* Lighter Pink */
+        }
+
+        .site-card.wiki {
+            background: linear-gradient(145deg, rgba(70, 130, 180, 0.6), rgba(50, 100, 150, 0.7)); /* Blue */
+        }
+        .light-mode .site-card.wiki {
+            background: linear-gradient(145deg, rgba(100, 149, 237, 0.8), rgba(80, 120, 200, 0.9)); /* Lighter Blue */
+        }
+
+        /* New style for Wheel of Names link in useful sites section */
+        .site-card.wheel-of-names {
+            background: linear-gradient(145deg, rgba(128, 0, 128, 0.6), rgba(90, 0, 90, 0.7)); /* Purple */
+        }
+        .light-mode .site-card.wheel-of-names {
+            background: linear-gradient(145deg, rgba(221, 160, 221, 0.8), rgba(190, 130, 190, 0.9)); /* Lighter Plum */
+        }
+
+        .site-icon {
+            font-size: 30px; /* Adjusted to match social icon size */
+            min-width: 30px; /* Adjusted to match social icon size */
+            text-align: center;
+            display: flex; /* Allow image to be centered */
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Style for image inside site-icon */
+        .site-icon-img {
+            width: 100%;
+            height: 100%; /* Changed from auto to 100% */
+            max-height: 30px; /* Adjusted to match social icon size */
+            object-fit: contain;
+        }
+
+        /* removed Specific style for Supercell Store icon (originally was to make it larger) */
+        /* .site-card.store .site-icon-img {
+            width: 45px;
+            height: 45px;
+            max-height: none;
+        } */
+
+        .site-text h3 {
+            font-size: 1rem; /* Matched social-link */
+            margin-bottom: 0.2rem; /* Matched social-link */
+        }
+
+        .site-text p {
+            font-size: 0.8rem; /* Matched social-link */
+            line-height: 1.2;
+        }
+
+        /* Social Media Section - New Background */
+        .social-media {
+            background: linear-gradient(135deg, rgba(128, 0, 128, 0.7) 0%, rgba(100, 0, 100, 0.8) 100%); /* Purple gradient */
+            border-radius: 20px;
+            padding: 3rem;
+            border: 2px solid var(--social-media-border);
+            text-align: center;
+        }
+
+        .light-mode .social-media {
+            background: linear-gradient(135deg, rgba(200, 160, 200, 0.9) 0%, rgba(180, 140, 180, 0.95) 100%); /* Lighter purple for light mode */
+        }
+
+        .social-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusted min-width for smaller buttons */
+            gap: 0.8rem; /* Smaller gap */
+            margin-top: 1.2rem; /* Reduced margin */
+        }
+
+        /* Social Link - New Background and Reduced Size */
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem; /* Reduced gap */
+            padding: 0.8rem; /* Reduced padding */
+            background: linear-gradient(145deg, rgba(30, 20, 30, 0.8), rgba(50, 30, 50, 0.8)); /* Default gradient */
+            border-radius: 15px;
+            text-decoration: none;
+            color: var(--color-text-primary);
+            transition: all 0.3s ease;
+            border: 2px solid var(--social-link-border);
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5), inset 1px 1px 3px rgba(255, 255, 255, 0.1); /* 3D effect shadow */
+            animation: button-pulse 3s infinite ease-in-out; /* Added animation */
+        }
+
+        .social-link:hover {
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), inset -1px -1px 3px rgba(255, 255, 255, 0.05); /* Simulates press */
+            transform: translateY(1px); /* Slight press down */
+            animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; /* Shaking animation on hover */
+            backface-visibility: hidden; /* Fix for flickering on some browsers */
+            perspective: 1000px;
+        }
+
+        .light-mode .social-link {
+            background: linear-gradient(145deg, rgba(240, 240, 240, 0.9), rgba(220, 220, 220, 0.9)); /* Light mode default gradient */
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15), inset 1px 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        .light-mode .social-link:hover {
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.08), inset -1px -1px 3px rgba(0, 0, 0, 0.02);
+        }
+
+        /* Social icon image adjustments */
+        .social-icon img {
+            height: 30px; /* Reduced icon size further */
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* Social text size adjustments */
+        .social-text h3 {
+            font-size: 1rem; /* Reduced font size for heading further */
+            margin-bottom: 0.2rem; /* Reduced margin further */
+        }
+
+        .social-text p {
+            font-size: 0.8rem; /* Reduced font size for paragraph further */
+            line-height: 1.2;
+        }
+
+        /* Specific hover colors for social links */
+        .social-link.youtube {
+            background: linear-gradient(145deg, rgba(255, 0, 0, 0.6), rgba(200, 0, 0, 0.7)); /* Red */
+        }
+        .light-mode .social-link.youtube {
+            background: linear-gradient(145deg, rgba(255, 99, 71, 0.8), rgba(230, 80, 50, 0.9)); /* Lighter Tomato */
+        }
+
+
+        .social-link.facebook {
+            background: linear-gradient(145deg, rgba(24, 119, 242, 0.6), rgba(20, 90, 180, 0.7)); /* Facebook Blue */
+        }
+        .light-mode .social-link.facebook {
+            background: linear-gradient(145deg, rgba(66, 103, 178, 0.8), rgba(50, 80, 140, 0.9)); /* Lighter Facebook Blue */
+        }
+
+
+        .social-link.discord {
+            background: linear-gradient(145deg, rgba(114, 137, 218, 0.6), rgba(90, 110, 180, 0.7)); /* Discord Blue */
+        }
+        .light-mode .social-link.discord {
+            background: linear-gradient(145deg, rgba(121, 147, 230, 0.8), rgba(100, 120, 190, 0.9)); /* Lighter Discord Blue */
+        }
+
+
+        .social-link.telegram {
+            background: linear-gradient(145deg, rgba(0, 136, 204, 0.6), rgba(0, 100, 160, 0.7)); /* Telegram Blue */
+        }
+        .light-mode .social-link.telegram {
+            background: linear-gradient(145deg, rgba(0, 179, 255, 0.8), rgba(0, 140, 200, 0.9)); /* Lighter Telegram Blue */
+        }
+
+
+        .social-link.tiktok {
+            background: linear-gradient(145deg, rgba(255, 0, 80, 0.6), rgba(200, 0, 60, 0.7)); /* TikTok Red */
+        }
+        .light-mode .social-link.tiktok {
+            background: linear-gradient(145deg, rgba(255, 69, 0, 0.8), rgba(230, 50, 0, 0.9)); /* Lighter Orange Red */
+        }
+        
+        /* My Games Section */
+        .my-games {
+            background: var(--my-games-bg);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 2px solid var(--my-games-border);
+            text-align: center;
+        }
+
+        .light-mode .my-games {
+            background: var(--my-games-bg);
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            justify-content: center; /* Center items when they don't fill a row */
+        }
+
+        .game-card {
+            display: flex;
+            flex-direction: column; /* Stack icon/image and text vertically */
+            align-items: center;
+            gap: 0.5rem; /* Reduced gap */
+            padding: 1rem; /* Adjusted padding */
+            background: rgba(0, 0, 0, 0.75); /* Consistent dark background */
+            border-radius: 15px;
+            text-decoration: none;
+            color: var(--color-text-primary);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.2); /* Soft white border */
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5), inset 1px 1px 3px rgba(255, 255, 255, 0.1);
+            animation: button-pulse 3s infinite ease-in-out;
+        }
+
+        .game-card:hover {
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), inset -1px -1px 3px rgba(255, 255, 255, 0.05);
+            transform: translateY(1px);
+            animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+
+        .light-mode .game-card {
+            background: rgba(240, 240, 240, 0.9); /* Lighter background in light mode */
+            border: 2px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15), inset 1px 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        .light-mode .game-card:hover {
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.08), inset -1px -1px 3px rgba(0, 0, 0, 0.02);
+        }
+
+        .game-icon {
+            width: 80px; /* Larger icon size */
+            height: 80px; /* Larger icon size */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* Ensure images don't overflow */
+            border-radius: 10px; /* Slightly rounded corners for icons */
+            background-color: rgba(255, 255, 255, 0.1); /* Subtle background for icons */
+        }
+
+        .game-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover the area, cropping if necessary */
+        }
+
+        .game-text h3 {
+            font-size: 1.1rem; /* Slightly larger heading for game cards */
+            margin-bottom: 0.2rem;
+            color: var(--color-highlight);
+        }
+
+        .game-text p {
+            font-size: 0.9rem; /* Slightly larger paragraph for game cards */
+            line-height: 1.3;
+        }
+
+        .game-card.hidden {
+            display: none;
+        }
+
+        #show-more-games-btn {
+            display: block; /* Ensure it's a block level button */
+            margin: 2rem auto 0; /* Center the button and add top margin */
+            padding: 0.8rem 1.8rem;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+
+        /* Floating Button */
+        .floating-btn {
+            position: fixed;
+            bottom: 1.5rem; /* Adjusted for smaller size */
+            left: 1.5rem; /* Adjusted for smaller size */
+            background: linear-gradient(45deg, var(--color-highlight), var(--color-accent-gold), var(--color-accent-blue));
+            color: #000;
+            padding: 0.8rem; /* Smaller padding */
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.2rem; /* Smaller font size */
+            box-shadow: 0 3px 15px rgba(76, 175, 80, 0.4); /* Smaller shadow */
+            transition: all 0.3s ease;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+            width: 45px; /* Explicit width for a smaller circle */
+            height: 45px; /* Explicit height for a smaller circle */
+            display: flex; /* To center content */
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 3px 15px rgba(76, 175, 80, 0.4); } /* Smaller shadow pulse */
+            50% { box-shadow: 0 3px 20px rgba(76, 175, 80, 0.7); } /* Stronger shadow pulse */
+            100% { box-shadow: 0 3px 15px rgba(76, 175, 80, 0.4); }
+        }
+        
+        /* New animation for logos and text */
+        @keyframes rotate-bounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(10deg); }
+            50% { transform: translateY(0) rotate(0deg); }
+            75% { transform: translateY(-10px) rotate(-10deg); }
+        }
+
+        .animated-element {
+            display: inline-block;
+            animation: rotate-bounce 4s infinite ease-in-out;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* New animation for buttons */
+        @keyframes button-pulse {
+            0% { transform: scale(1); box-shadow: 0 0 8px rgba(76, 175, 80, 0.2), 0 0 15px rgba(76, 175, 80, 0.15) inset; }
+            50% { transform: scale(1.005); box-shadow: 0 0 12px rgba(76, 175, 80, 0.4), 0 0 20px rgba(76, 175, 80, 0.3) inset; }
+            100% { transform: scale(1); box-shadow: 0 0 8px rgba(76, 175, 80, 0.2), 0 0 15px rgba(76, 175, 80, 0.15) inset; }
+        }
+
+        /* Shake animation for buttons on hover */
+        @keyframes shake {
+            10%, 90% {
+                transform: translate3d(-1px, 0, 0);
+            }
+            20%, 80% {
+                transform: translate3d(2px, 0, 0);
+            }
+            30%, 50%, 70% {
+                transform: translate3d(-4px, 0, 0);
+            }
+            40%, 60% {
+                transform: translate3d(4px, 0, 0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) { /* For mobile devices (up to 768px wide) */
+            .navbar {
+                padding: 0.3rem 0; /* Even smaller padding for very compact navbar */
+            }
+
+            .nav-container {
+                flex-direction: column;
+                gap: 0.5rem; /* Reduced gap between elements in mobile navbar */
+                padding: 0 1rem; /* Reduced horizontal padding */
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 0.5rem; /* Reduced gap between nav links */
+                justify-content: center; /* Center nav links on small screens */
+            }
+
+            .nav-links a {
+                padding: 0.4rem 0.8rem; /* Even smaller padding for buttons */
+                font-size: 0.8rem; /* Smaller font size for nav links */
+                border-radius: 6px; /* More compact rounded corners */
+            }
+            
+            .nav-links a img {
+                height: 20px; /* Even smaller icons in nav */
+            }
+
+            .logo {
+                font-size: 1.3rem; /* Smaller logo text */
+                flex-direction: row; /* Keep logo elements in a row if possible */
+                text-align: center;
+                gap: 0.2rem; /* Reduced gap in logo */
+            }
+
+            .logo span {
+                font-size: 1.5rem; /* Adjusted for smaller screens */
+            }
+
+            .logo .main-logo-img,
+            .logo .new-logo-img {
+                height: 25px; /* Smaller main logo and new logos */
+                width: 25px;
+            }
+
+            .theme-toggle {
+                width: 35px; /* Smaller theme toggle button */
+                height: 35px;
+                font-size: 1.1rem; /* Smaller font for toggle icon */
+                margin-top: 0.5rem; /* Slightly reduced margin */
+            }
+
+            .hero {
+                height: auto; /* Allow height to adjust based on content */
+                min-height: 80vh; /* Ensure it's still tall enough */
+                padding-top: 5rem; /* Adjust padding for fixed navbar */
+                padding-bottom: 2rem; /* Add some bottom padding */
+            }
+
+            .hero .main-title {
+                font-size: 2.2rem; /* Smaller main title */
+                flex-direction: column; /* Stack logo and text on small screens */
+                gap: 8px; /* Reduced gap */
+            }
+            /* Adjusted font size for "Salam Games" in header on small screens */
+            .hero .main-title span {
+                font-size: 3rem; /* Smaller Salam Games text */
+            }
+
+            .hero .header-logo {
+                width: 50px; /* Smaller hero logo */
+                height: 50px;
+            }
+            
+            .hero-gif-logo {
+                width: 80%; /* Make GIF larger on smaller screens */
+                height: auto;
+                opacity: 0.3; /* More transparent on smaller screens */
+            }
+
+            .hero-subtitle,
+            .hero-description-text { /* Applied for responsive text */
+                font-size: 0.9rem; /* Smaller text for better fit */
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem; /* Smaller heading */
+            }
+
+            .cta-button {
+                padding: 0.7rem 1.3rem; /* Smaller CTA button */
+                font-size: 0.9rem;
+            }
+
+            .section {
+                padding: 1.5rem 0.8rem; /* Reduced section padding */
+                margin: 0.8rem auto; /* Reduced margin */
+                max-width: 95%; /* Adjusted for mobile */
+            }
+
+            .section h2 {
+                font-size: 1.6rem; /* Smaller section headings */
+                flex-direction: column; /* Stack heading and GIF */
+                gap: 4px;
+            }
+
+            .about-heading-gif {
+                width: 60px; /* Smaller GIF in about section */
+                height: 60px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 1rem; /* Reduced gap */
+            }
+
+            .about-icons {
+                flex-direction: row; /* Keep icons in a row on small screens */
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.8rem; /* Reduced gap */
+            }
+
+            .about-icons .about-icon-img {
+                width: 40px; /* Smaller icons */
+                height: 40px;
+            }
+
+            .about-text {
+                font-size: 0.9rem; /* Smaller about text */
+            }
+
+            .about-images img {
+                width: 60px; /* Smaller images in about section */
+                height: 60px;
+            }
+
+            .sites-grid,
+            .social-links,
+            .games-grid { /* Added games-grid here */
+                grid-template-columns: 1fr; /* Single column layout for sites, social, and games */
+                gap: 0.5rem; /* Smaller gap */
+            }
+
+            .site-card,
+            .social-link,
+            .game-card { /* Added game-card here */
+                padding: 0.6rem; /* Reduced padding for cards/links */
+                font-size: 0.8rem; /* Smaller font for card text */
+            }
+
+            .site-icon, .social-icon, .game-icon { /* Added game-icon here */
+                min-width: 25px; /* Smaller icon containers */
+                width: 60px; /* Smaller game icon size */
+                height: 60px;
+            }
+            
+            .site-icon-img, .social-icon img, .game-icon img { /* Added game-icon img here */
+                height: 20px; /* Smaller icons in cards/links */
+            }
+
+            .game-icon img { /* Specific for game icon image */
+                height: 60px; /* Ensure game image fills container */
+                width: 60px;
+            }
+
+            .site-text h3, .social-text h3, .game-text h3 { /* Added game-text h3 here */
+                font-size: 0.8rem; /* Smaller heading in cards/links */
+            }
+
+            .site-text p, .social-text p, .game-text p { /* Added game-text p here */
+                font-size: 0.65rem; /* Smaller paragraph in cards/links */
+            }
+
+            .floating-btn {
+                bottom: 0.8rem;
+                left: 0.8rem;
+                font-size: 0.9rem; /* Smaller font for smaller button */
+                padding: 0.5rem; /* Smaller padding */
+                width: 40px; /* Smaller button */
+                height: 40px; /* Smaller button */
+            }
+        }
+
+        /* Specific adjustments for iPad (portrait and landscape) - can be refined based on testing */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .nav-container {
+                padding: 0 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .hero .main-title {
+                font-size: 3rem;
+            }
+
+            .hero .main-title span {
+                font-size: 4rem;
+            }
+
+            .hero .header-logo {
+                width: 70px;
+                height: 70px;
+            }
+
+            .hero-gif-logo {
+                width: 60%;
+                height: 60%;
+            }
+
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero-description-text { /* Applied for responsive text */
+                font-size: 1.1rem;
+            }
+
+            .section {
+                padding: 3rem 1.5rem;
+                margin: 1.5rem auto;
+                max-width: 90%; /* Adjusted for tablets */
+            }
+
+            .section h2 {
+                font-size: 2.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr; /* Changed to single column for tablets */
+                text-align: center; /* Center content for tablets */
+                gap: 2rem;
+            }
+
+            .about-icons {
+                flex-direction: row; /* Keep icons in a row on tablets */
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1.5rem;
+            }
+
+            .about-icons .about-icon-img {
+                width: 55px; /* Slightly smaller icons for tablets */
+                height: 55px;
+            }
+
+            .about-text {
+                font-size: 1.0rem; /* Slightly smaller text for tablets */
+            }
+
+            .about-images img {
+                width: 80px; /* Slightly smaller images for tablets */
+                height: 80px;
+            }
+
+            .sites-grid,
+            .social-links,
+            .games-grid { /* Added games-grid here */
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Adjusted min-width for tablets */
+                gap: 0.7rem;
+            }
+
+            .site-card,
+            .social-link,
+            .game-card { /* Added game-card here */
+                padding: 0.7rem; /* Adjusted padding for tablets */
+            }
+
+            .game-icon {
+                width: 70px; /* Adjusted game icon size for tablets */
+                height: 70px;
+            }
+            .game-icon img {
+                height: 70px; /* Ensure image fills container */
+                width: 70px;
+            }
+
+
+            .floating-btn {
+                bottom: 1.2rem; /* Adjusted for tablets */
+                left: 1.2rem; /* Adjusted for tablets */
+                font-size: 1.1rem; /* Adjusted font size for tablets */
+                padding: 0.7rem; /* Adjusted padding for tablets */
+                width: 50px; /* Adjusted size for tablets */
+                height: 50px; /* Adjusted size for tablets */
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="./new_logo_img_1.png" alt="New Logo 1" onerror="this.style.display='none'">
+                <img src="./new_logo_img_2.png" alt="New Logo 2" onerror="this.style.display='none'">
+                
+                <img src="./لوغو.png" alt="Salam Games Logo" class="main-logo-img animated-element" onerror="this.style.display='none'">
+                <span class="animated-element">Salam Games</span>
+            </div>
+            <ul class="nav-links">
+                <li>
+                    <a href="#about">
+                        <img src="./download.png" alt="من نحن" onerror="this.style.display='none'">
+                        من نحن
+                    </a>
+                </li>
+                <li>
+                    <a href="#useful-sites">
+                        <img src="./greetings_comp-front.png" alt="مواقع مفيدة" onerror="this.style.display='none'">
+                        مواقع مفيدة
+                    </a>
+                </li>
+                 <li>
+                    <a href="#my-games">
+                        <img src="C:\Users\majid\Desktop\sal\folder-green-steam-icon.png" alt="العابي" onerror="this.style.display='none'">
+                        ألعابي
+                    </a>
+                </li>
+                <li>
+                    <a href="#social">
+                        <img src="./Hay_Day_logo.png" alt="تواصل اجتماعي" onerror="this.style.display='none'">
+                        تواصل اجتماعي
+                    </a>
+                </li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle">
+             ☀️ </button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="main-title">
+                <img src="./لوغو.png" alt="Salam Games Logo" class="header-logo animated-element" onerror="this.style.display='none'">
+                <span>Salam Games</span> 
+                <img src="./لوغو.png" alt="Salam Games Logo" class="header-logo animated-element" onerror="this.style.display='none'>
+                <img src="./cbea73ee3feceeda146c23596720eeae.gif" alt="Animated GIF" class="hero-gif-logo" onerror="this.style.display='none'">
+            </h1>
+            <p class="hero-subtitle">ألعاب محاكاة، العاب جوال، ومحتوى ممتع نقي 100%!</p>
+            <h2>انضم الى مجتمع الالعاب الخاص بنا <img src="./source (1).gif" alt="Animated Celebration GIF" class="inline-gif" onerror="this.style.display='none'"></h2>
+            <p class="hero-description-text">اكتشف أفضل ألعاب المحاكاة والعاب الجوال مع محتوى عربي أصيل وممتع</p>
+            <a href="https://www.youtube.com/@Salam.Games04" class="cta-button">اشترك الآن 🚀</a>
+        </div>
+    </section>
+
+    <section id="about" class="section is-visible">
+        <div class="about">
+    <h2>
+        <img src="C:/Users/majid/Desktop/sal/giphy.gif" alt="About Us GIF" style="width: 50px; height: 50px; vertical-align: middle;"> من نحن <img src="C:/Users/majid/Desktop/sal/giphy.gif" alt="About Us GIF" style="width: 50px; height: 50px; vertical-align: middle;">
+    </h2>
+    <div class="about-content">
+        <div class="about-icons">
+            <div><img src="./greetings_comp-front.png" alt="Icon 1" class="about-icon-img is-visible" onerror="this.style.display='none'"></div>
+            <div><img src="./Tom_Sleeping.webp" alt="Icon 2" class="about-icon-img is-visible" onerror="this.style.display='none'"></div>
+            <div><img src="./d2853462e24c717360b84704d17b6d4e.png" alt="Icon 3" class="about-icon-img is-visible" onerror="this.style.display='none'"></div>
+            <div><img src="./لوغو.png" alt="Icon 4" class="about-icon-img" onerror="this.style.display='none'"></div>
+        </div>
+        <div class="about-text">
+            <p>🎮 <strong>أهلاً بكم في قناتي الخاصة بعالم ألعاب الكمبيوتر و العاب الجوال!</strong> 🎮</p>
+            <p>هنا تلاقوا أجمل وأحدث الفيديوهات لأقوى ألعاب الكمبيوتر والجوال ، من مقاطع حماسية إلى تجارب فريدة مليانة متعة وتحدي! 😍🕹️</p>
+            <p>انطلقت القناة في مايو 2021، وكانت البداية بسيطة وتفتقر للخبرة، لكن بفضل دعمكم وتشجيعكم المستمر قدرت أطور من نفسي ومن المحتوى اللي أقدمه. ومن وقتها وأنا أبحث دايمًا عن كل جديد ومميز يخلي القناة ترتقي لمستوى يليق فيكم! 🙌💪</p>
+            <p>🎯 <strong>هدفي؟</strong> أقدم لكم محتوى ممتع، احترافي، ومليان طاقة، يرضي ذوقكم وينال إعجابكم. تابعوني علشان نعيش مع بعض أروع اللحظات في عالم الألعاب! 🚀🎮</p>
+        </div>
+    </div>
+</div>
+    </section>
+
+    <section id="useful-sites" class="section">
+        <div class="useful-sites">
+            <h2>مواقع مفيدة <img src="./d5aec82158ccc39ec9b7732cd2aac817-0.gif" alt="Animated Globe GIF" class="useful-sites-heading-gif" onerror="this.style.display='none'"></h2>
+            <div class="sites-grid">
+                <a href="https://brh-hayday-tools.netlify.app/harvest-calculator/harvest-calculator.html" class="site-card harvest" target="_blank">
+                    <div class="site-icon">🧮</div>
+                    <div class="site-text">
+                        <h3>حاسبة الحصاد</h3>
+                        <p>احسب أرباحك وخطط لحصادك بدقة</p>
+                    </div>
+                </a>
+
+                <a href="https://hayday.com/en/kitchen/friedcandybar/" class="site-card kitchen" target="_blank">
+                    <div class="site-icon">🍳</div>
+                    <div class="site-text">
+                        <h3>مطبخ سوبر سيل</h3>
+                        <p>اكتشف وصفات جديدة ومميزة</p>
+                    </div>
+                </a>
+
+                <a href="https://store.supercell.com/ar/hayday" class="site-card store" target="_blank">
+                    <div class="site-icon">
+    <img src="./spu.png" alt="Supercell Store Icon" class="site-icon-img">
+</div>
+
+                    <div class="site-text">
+                        <h3>متجر سوبرسيل</h3>
+                        <p>اشتري فارم باس ومجوهرات رسمية</p>
+                    </div>
+                </a>
+
+                <a href="https://hayday.fandom.com/wiki/Products" class="site-card wiki" target="_blank">
+                    <div class="site-icon">📚</div>
+                    <div class="site-text">
+                        <h3>ويكي المنتجات</h3>
+                        <p>دليل شامل لجميع منتجات الفلات</p>
+                    </div>
+                </a>
+                
+                <a href="https://wheelofnames.com/ar" class="site-card wheel-of-names" target="_blank">
+                    <div class="site-icon">🎡</div>
+                    <div class="site-text">
+                        <h3>عجلة الأسماء</h3>
+                        <p>للقرعة والاختيار العشوائي</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="my-games" class="section">
+        <div class="my-games">
+            <h2>ألعابي <img src="C:\Users\majid\Desktop\sal\folder-green-steam-icon.png" alt="Animated Game Controller GIF" class="my-games-heading-gif" onerror="this.style.display='none'"> 
+</h2>
+            <div class="games-grid">
+                <a href="#" class="game-card is-visible" target="_blank">
+                    <div class="game-icon">
+                        <img src="C:\Users\majid\Desktop\sal\c25d1e44cdf74d55b064189e6b2657341739874292.webp" alt="Hay Day Icon" onerror="this.style.display='none'">
+                    </div>
+                    <div class="game-text">
+                        <h3>Hay Day</h3>
+                        <p>لعبة المزرعة الشهيرة</p>
+                    </div>
+                </a>
+                <a href="#" class="game-card is-visible" target="_blank">
+                    <div class="game-icon">
+                        <img src="C:\Users\majid\Desktop\sal\icons8-free-fire-100.png" alt="Free Fire Icon" onerror="this.style.display='none'">
+                    </div>
+                    <div class="game-text">
+                        <h3>Free Fire</h3>
+                        <p>معارك البقاء المثيرة</p>
+                    </div>
+                </a>
+                <a href="#" class="game-card is-visible" target="_blank">
+                    <div class="game-icon">
+                        <img src="C:\Users\majid\Desktop\sal\unnamed.png" alt="WormsZone.io Icon" onerror="this.style.display='none'">
+                    </div>
+                    <div class="game-text">
+                        <h3>WormsZone.io</h3>
+                        <p>تحديات الديدان الممتعة</p>
+                    </div>
+                </a>
+                <a href="#" class="game-card is-visible" target="_blank">
+                    <div class="game-icon">
+                       <img src="C:\Users\majid\Desktop\sal\unnamed (1).png" alt="Mobile Legends Icon" onerror="this.style.display='none'">
+                    </div>
+                    <div class="game-text">
+                        <h3>Mobile Legends</h3>
+                        <p>أساطير الجوال في انتظارك</p>
+                    </div>
+                </a>
+                <a href="#" class="game-card is-visible" target="_blank">
+                    <div class="game-icon">
+                        <img src="https://placehold.co/100x100/8B4513/ffffff?text=FS25" alt="Farming Simulator 25 Icon" onerror="this.style.display='none'">
+                    </div>
+                    <div class="game-text">
+                        <h3>Farming Simulator 25</h3>
+                        <p>تجربة زراعية واقعية</p>
+                    </div>
+                </a>
+                <a href="#" class="game-card is-visible" target="_blank">
+                    <div class="game-icon">
+                        <img src="C:\Users\majid\Desktop\sal\Boxart-1080x1080-300x300.jpg" alt="Farm Together 2 Icon" onerror="this.style.display='none'">
+                    </div>
+                    <div class="game-text">
+                        <h3>Farm Together 2</h3>
+                        <p>ازرع وتعاون مع الأصدقاء</p>
+                    </div>
+                </a>
+                <a href="#" class="game-card is-visible" target="_blank">
+                    <div class="game-icon">
+                        <img src="C:\Users\majid\Desktop\sal\images.jpg" alt="Medieval Dynasty Icon" onerror="this.style.display='none'">
+                    </div>
+                    <div class="game-text">
+                        <h3>Medieval Dynasty</h3>
+                        <p>بناء مملكتك الخاصة</p>
+                    </div>
+                </a>
+                <a href="#" class="game-card is-visible" target="_blank">
+                    <div class="game-icon">
+                        <img src="C:\Users\majid\Desktop\sal\DOIGq71C_400x400.png" alt="Dealer Simulator Icon" onerror="this.style.display='none'">
+                    </div>
+                    <div class="game-text">
+                        <h3>Dealer Simulator</h3>
+                        <p>كن أفضل تاجر في المدينة</p>
+                    </div>
+                </a>
+                <a href="#" class="game-card is-visible" target="_blank">
+                    <div class="game-icon">
+                        <img src="C:\Users\majid\Desktop\sal\ppp.jpg" alt="Poly Roam Icon" onerror="this.style.display='none'">
+                    </div>
+                    <div class="game-text">
+                        <h3>Poly Roam</h3>
+                        <p>استكشاف العالم ثلاثي الأبعاد</p>
+                    </div>
+                </a>
+                <a href="#" class="game-card is-visible" target="_blank">
+                    <div class="game-icon">
+                        <img src="C:\Users\majid\Desktop\sal\unnamed (2).png" alt="mo.co Icon" onerror="this.style.display='none'">
+                    </div>
+                    <div class="game-text">
+                        <h3>mo.co</h3>
+                        <p>مغامرات متعددة اللاعبين</p>
+                    </div>
+                </a>
+                <a href="#" class="game-card hidden" target="_blank">
+                    <div class="game-icon">
+                        <img src="C:\Users\majid\Desktop\sal\Soulmask-Main-Art-900x900.jpg" alt="Soulmask Icon" onerror="this.style.display='none'">
+                    </div>
+                    <div class="game-text">
+                        <h3>Soulmask</h3>
+                        <p>مغامرات البقاء والأسرار</p>
+                    </div>
+                </a>
+                <a href="#" class="game-card hidden" target="_blank">
+                    <div class="game-icon">
+                        <img src="C:\Users\majid\Desktop\sal\unnamed (3).png" alt="Squad Busters Icon" onerror="this.style.display='none'">
+                    </div>
+                    <div class="game-text">
+                        <h3>Squad Busters</h3>
+                        <p>الاشتباكات السريعة مع الأبطال</p>
+                    </div>
+                </a>
+                <a href="#" class="game-card hidden" target="_blank">
+                    <div class="game-icon">
+                        <img src="C:\Users\majid\Desktop\sal\hqdefault.jpg" alt="Ranch Simulator Icon" onerror="this.style.display='none'">
+                    </div>
+                    <div class="game-text">
+                        <h3>Ranch Simulator</h3>
+                        <p>بناء مزرعة أحلامك</p>
+                    </div>
+                </a>
+                 <a href="#" class="game-card hidden" target="_blank">
+                    <div class="game-icon">
+                        <img src="C:\Users\majid\Desktop\sal\icarus-button-01-1617393582098.jpg" alt="Icarus Icon" onerror="this.style.display='none'">
+                    </div>
+                    <div class="game-text">
+                        <h3>Icarus</h3>
+                        <p>البقاء في عالم معادٍ</p>
+                    </div>
+                </a>
+                <a href="#" class="game-card hidden" target="_blank">
+                    <div class="game-icon">
+                        <img src="C:\Users\majid\Desktop\sal\0.jpg" alt="Farmer Life Icon" onerror="this.style.display='none'">
+                    </div>
+                    <div class="game-text">
+                        <h3>Farmer Life</h3>
+                        <p>حياة المزارع الممتعة</p>
+                    </div>
+                </a>
+                <a href="#" class="game-card hidden" target="_blank">
+                    <div class="game-icon">
+                        <img src="C:\Users\majid\Desktop\sal\unnamed (4).png" alt="Duck Detective Icon" onerror="this.style.display='none'">
+                    </div>
+                    <div class="game-text">
+                        <h3>Duck Detective</h3>
+                        <p>حل الألغاز مع المحقق البطة</p>
+                    </div>
+                </a>
+            </div>
+            <button id="show-more-games-btn" class="cta-button">عرض المزيد</button>
+        </div>
+    </section>
+
+    <section id="social-media" class="section is-visible"> <div class="social-media">
+        <h2>تواصل اجتماعي <img src="C:/Users/majid/Desktop/sal/200.gif" alt="Animated Handshake GIF" class="social-heading-gif" style="width: 55px; height: 55px;"></h2>
+        <div class="social-links">
+            <a href="https://www.youtube.com/@Salam.Games04" class="social-link youtube is-visible" target="_blank">
+                <div class="social-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/256px-YouTube_full-color_icon_%282017%29.svg.png" alt="YouTube Icon" onerror="this.style.display='none'">
+                </div>
+                <div class="social-text">
+                    <h3>قناتي اليوتيوب</h3>
+                    <p>اشترك للحصول على أحدث الفيديوهات</p>
+                </div>
+            </a>
+
+            <a href="https://www.facebook.com/people/Salam-Gm/pfbid02tJ5DkppNcnwwjRHwrBmfZwTxQ9ZuRvhky93e9PrBh3SSQsuczvzgeJYK5bYDH6Tzl/" class="social-link facebook is-visible" target="_blank">
+                <div class="social-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/2048px-2021_Facebook_icon.svg.png" alt="Facebook Icon" onerror="this.style.display='none'">
+                </div>
+                <div class="social-text">
+                    <h3>حسابي فيس بوك</h3>
+                    <p>تابعني لآخر الأخبار والتحديثات</p>
+                </div>
+            </a>
+
+            <a href="https://discord.gg/F5ZjGHMpWC" class="social-link discord is-visible" target="_blank">
+                <div class="social-icon">
+                    <img src="./ديسكورد.png" alt="Discord Icon" onerror="this.style.display='none'">
+                </div>
+                <div class="social-text">
+                    <h3>سيرفر الديسكورد</h3>
+                    <p>انضم للمجتمع واللعب مع الأصدقاء</p>
+                </div>
+            </a>
+
+            <a href="https://t.me/salamsm04" class="social-link telegram is-visible" target="_blank">
+                <div class="social-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/2048px-Telegram_logo_svg.svg.png" alt="Telegram Icon" onerror="this.style.display='none'">
+                </div>
+                <div class="social-text">
+                    <h3>تلغرام</h3>
+                    <p>تواصل معي مباشرة</p>
+                </div>
+            </a>
+
+            <a href="https://www.tiktok.com/@salam.games45" class="social-link tiktok" target="_blank">
+                <div class="social-icon">
+                    <img src="./تبك توك.png" alt="TikTok Icon" onerror="this.style.display='none'">
+                </div>
+                <div class="social-text">
+                    <h3>تيك توك</h3>
+                    <p>مقاطع قصيرة وممتعة من الألعاب</p>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+    <footer class="footer">
+        <div class="footer-links">
+            </div>
+        <p>© 2025 Salam Games. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <a href="https://www.youtube.com/@Salam.Games04" class="floating-btn" title="زيارة قناة اليوتيوب">📺</a>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                // When scrolled, apply a slightly different shadow for depth
+                navbar.style.boxShadow = '0 8px 30px rgba(0, 0, 0, 0.6)';
+            } else {
+                // When at top, use the default navbar shadow
+                navbar.style.boxShadow = 'var(--navbar-shadow)';
+            }
+            // The background (including floral pattern) remains consistent as it's set by CSS variables
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                } else {
+                    entry.target.classList.remove('is-visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.social-link, .site-card, .section, .about-images, .about-icons .about-icon-img, .game-card').forEach(card => { 
+            observer.observe(card);
+        });
+
+        // Add fadeInUp animation CSS (moved to style block)
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Theme Toggle JavaScript
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Function to set the theme based on mode ('dark' or 'light')
+        function setTheme(mode) {
+            if (mode === 'dark') {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+                themeToggleBtn.innerHTML = '☀️'; // Sun icon for dark mode (click to go to light)
+            } else {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+                themeToggleBtn.innerHTML = '🌙'; // Moon icon for light mode (click to go to dark)
+            }
+            localStorage.setItem('theme', mode); // Save preference
+        }
+
+        // Function to toggle the theme
+        function toggleTheme() {
+            if (body.classList.contains('dark-mode')) {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+        }
+
+        // Check for saved theme preference on page load
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        } else {
+            // Default to dark mode if no preference is saved
+            setTheme('dark');
+        }
+
+        // Add event listener to the toggle button
+        themeToggleBtn.addEventListener('click', toggleTheme);
+
+        // My Games "Show More" functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const gameCards = document.querySelectorAll('.games-grid .game-card');
+            const showMoreBtn = document.getElementById('show-more-games-btn');
+            const initialDisplayLimit = 9; // Number of games to show initially
+            let isShowingAll = false; // Track if all games are currently visible
+
+            // Function to update game card visibility and button text
+            function updateGameVisibility() {
+                if (isShowingAll) {
+                    // If currently showing all, hide beyond initial limit
+                    for (let i = initialDisplayLimit; i < gameCards.length; i++) {
+                        gameCards[i].classList.add('hidden');
+                    }
+                    showMoreBtn.textContent = 'عرض المزيد';
+                } else {
+                    // If not showing all, show all hidden games
+                    gameCards.forEach(card => {
+                        card.classList.remove('hidden');
+                    });
+                    showMoreBtn.textContent = 'إخفاء المزيد';
+                }
+                isShowingAll = !isShowingAll; // Toggle the state
+            }
+
+            // Initial setup on page load
+            if (gameCards.length > initialDisplayLimit) {
+                // Hide games beyond the initial limit
+                for (let i = initialDisplayLimit; i < gameCards.length; i++) {
+                    gameCards[i].classList.add('hidden');
+                }
+                showMoreBtn.style.display = 'block'; // Show the button
+                isShowingAll = false; // Set initial state to not showing all
+            } else {
+                showMoreBtn.style.display = 'none'; // Hide if not enough games to hide
+            }
+
+            // Add event listener to the toggle button
+            showMoreBtn.addEventListener('click', updateGameVisibility);
+        });
+    </script>
+</body>
+</html>
