@@ -1239,150 +1239,6 @@
     </style>
 </head>
 <body>
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Add scroll effect to navbar
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 100) {
-                // When scrolled, apply a slightly different shadow for depth
-                navbar.style.boxShadow = '0 8px 30px rgba(0, 0, 0, 0.6)';
-            } else {
-                // When at top, use the default navbar shadow
-                navbar.style.boxShadow = 'var(--navbar-shadow)';
-            }
-            // The background (including floral pattern) remains consistent as it's set by CSS variables
-        });
-
-        // Animate elements on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                } else {
-                    entry.target.classList.remove('is-visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.social-link, .site-card, .section, .about-images, .about-icons .about-icon-img, .game-card').forEach(card => { 
-            observer.observe(card);
-        });
-
-        // Add fadeInUp animation CSS (moved to style block)
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fadeInUp {
-                from {
-                    opacity: 0;
-                    transform: translateY(30px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Theme Toggle JavaScript
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const body = document.body;
-
-        // Function to set the theme based on mode ('dark' or 'light')
-        function setTheme(mode) {
-            if (mode === 'dark') {
-                body.classList.remove('light-mode');
-                body.classList.add('dark-mode');
-                themeToggleBtn.innerHTML = '☀️'; // Sun icon for dark mode (click to go to light)
-            } else {
-                body.classList.remove('dark-mode');
-                body.classList.add('light-mode');
-                themeToggleBtn.innerHTML = '🌙'; // Moon icon for light mode (click to go to dark)
-            }
-            localStorage.setItem('theme', mode); // Save preference
-        }
-
-        // Function to toggle the theme
-        function toggleTheme() {
-            if (body.classList.contains('dark-mode')) {
-                setTheme('light');
-            } else {
-                setTheme('dark');
-            }
-        }
-
-        // Check for saved theme preference on page load
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            setTheme(savedTheme);
-        } else {
-            // Default to dark mode if no preference is saved
-            setTheme('dark');
-        }
-
-        // Add event listener to the toggle button
-        themeToggleBtn.addEventListener('click', toggleTheme);
-
-        // My Games "Show More" functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const gameCards = document.querySelectorAll('.games-grid .game-card');
-            const showMoreBtn = document.getElementById('show-more-games-btn');
-            const initialDisplayLimit = 9; // Number of games to show initially
-            let isShowingAll = false; // Track if all games are currently visible
-
-            // Function to update game card visibility and button text
-            function updateGameVisibility() {
-                if (isShowingAll) {
-                    // If currently showing all, hide beyond initial limit
-                    for (let i = initialDisplayLimit; i < gameCards.length; i++) {
-                        gameCards[i].classList.add('hidden');
-                    }
-                    showMoreBtn.textContent = 'عرض المزيد';
-                } else {
-                    // If not showing all, show all hidden games
-                    gameCards.forEach(card => {
-                        card.classList.remove('hidden');
-                    });
-                    showMoreBtn.textContent = 'إخفاء المزيد';
-                }
-                isShowingAll = !isShowingAll; // Toggle the state
-            }
-
-            // Initial setup on page load
-            if (gameCards.length > initialDisplayLimit) {
-                // Hide games beyond the initial limit
-                for (let i = initialDisplayLimit; i < gameCards.length; i++) {
-                    gameCards[i].classList.add('hidden');
-                }
-                showMoreBtn.style.display = 'block'; // Show the button
-                isShowingAll = false; // Set initial state to not showing all
-            } else {
-                showMoreBtn.style.display = 'none'; // Hide if not enough games to hide
-            }
-
-            // Add event listener to the toggle button
-            showMoreBtn.addEventListener('click', updateGameVisibility);
-        });
-    </script>
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
@@ -1729,5 +1585,149 @@
     </footer>
 
     <a href="https://www.youtube.com/@Salam.Games04" class="floating-btn" title="زيارة قناة اليوتيوب">📺</a>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                // When scrolled, apply a slightly different shadow for depth
+                navbar.style.boxShadow = '0 8px 30px rgba(0, 0, 0, 0.6)';
+            } else {
+                // When at top, use the default navbar shadow
+                navbar.style.boxShadow = 'var(--navbar-shadow)';
+            }
+            // The background (including floral pattern) remains consistent as it's set by CSS variables
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                } else {
+                    entry.target.classList.remove('is-visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.social-link, .site-card, .section, .about-images, .about-icons .about-icon-img, .game-card').forEach(card => { 
+            observer.observe(card);
+        });
+
+        // Add fadeInUp animation CSS (moved to style block)
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Theme Toggle JavaScript
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Function to set the theme based on mode ('dark' or 'light')
+        function setTheme(mode) {
+            if (mode === 'dark') {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+                themeToggleBtn.innerHTML = '☀️'; // Sun icon for dark mode (click to go to light)
+            } else {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+                themeToggleBtn.innerHTML = '🌙'; // Moon icon for light mode (click to go to dark)
+            }
+            localStorage.setItem('theme', mode); // Save preference
+        }
+
+        // Function to toggle the theme
+        function toggleTheme() {
+            if (body.classList.contains('dark-mode')) {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+        }
+
+        // Check for saved theme preference on page load
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        } else {
+            // Default to dark mode if no preference is saved
+            setTheme('dark');
+        }
+
+        // Add event listener to the toggle button
+        themeToggleBtn.addEventListener('click', toggleTheme);
+
+        // My Games "Show More" functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const gameCards = document.querySelectorAll('.games-grid .game-card');
+            const showMoreBtn = document.getElementById('show-more-games-btn');
+            const initialDisplayLimit = 9; // Number of games to show initially
+            let isShowingAll = false; // Track if all games are currently visible
+
+            // Function to update game card visibility and button text
+            function updateGameVisibility() {
+                if (isShowingAll) {
+                    // If currently showing all, hide beyond initial limit
+                    for (let i = initialDisplayLimit; i < gameCards.length; i++) {
+                        gameCards[i].classList.add('hidden');
+                    }
+                    showMoreBtn.textContent = 'عرض المزيد';
+                } else {
+                    // If not showing all, show all hidden games
+                    gameCards.forEach(card => {
+                        card.classList.remove('hidden');
+                    });
+                    showMoreBtn.textContent = 'إخفاء المزيد';
+                }
+                isShowingAll = !isShowingAll; // Toggle the state
+            }
+
+            // Initial setup on page load
+            if (gameCards.length > initialDisplayLimit) {
+                // Hide games beyond the initial limit
+                for (let i = initialDisplayLimit; i < gameCards.length; i++) {
+                    gameCards[i].classList.add('hidden');
+                }
+                showMoreBtn.style.display = 'block'; // Show the button
+                isShowingAll = false; // Set initial state to not showing all
+            } else {
+                showMoreBtn.style.display = 'none'; // Hide if not enough games to hide
+            }
+
+            // Add event listener to the toggle button
+            showMoreBtn.addEventListener('click', updateGameVisibility);
+        });
+    </script>
 </body>
 </html>
